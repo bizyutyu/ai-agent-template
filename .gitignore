@@ -1,0 +1,23 @@
+# Claude Code: 個人用のローカル設定(共有しない)
+.claude/settings.local.json
+
+# フックが出力する監査ログ
+.claude/logs/
+*.log
+
+# 環境変数(秘密情報を含む可能性があるため追跡しない)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/

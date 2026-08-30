@@ -17,7 +17,9 @@ Claude Codeを使った開発をすぐに一貫したルールで始められま
 │   │   ├── code-reviewer.md
 │   │   └── test-writer.md
 │   ├── skills/                        # スキル(スラッシュコマンド)定義
-│   │   └── example-skill/
+│   │   ├── example-skill/
+│   │   │   └── SKILL.md
+│   │   └── review-pr-deep/
 │   │       └── SKILL.md
 │   └── hooks/                         # PreToolUse / PostToolUse などのフックスクリプト
 │       ├── pre_tool_safety.py         # 危険なコマンド・機密ファイルアクセスをブロック
@@ -48,6 +50,10 @@ Claude Codeを使った開発をすぐに一貫したルールで始められま
 `/スキル名` で呼び出せるスキルの定義です。`example-skill` はコミットメッセージ生成のサンプル実装で、
 1スキル=1機能・副作用の最小化というスキル設計原則を示すための参照実装も兼ねています。
 新しいスキルを追加する場合は `example-skill/` をコピーして `SKILL.md` を書き換えてください。
+
+`review-pr-deep` は、自分がレビュー依頼されているPRの差分を品質・セキュリティ・パフォーマンス・
+テスタビリティの4観点で並列レビューし、統合レポートを生成する実用スキルです。`git worktree` に
+PRブランチを展開してdiffを取得するため、`gh` の認証(`repo`スコープ)が必要です。
 
 ### `.claude/hooks/`
 Claude Codeのツール実行前後にstdin経由でJSONを受け取り、許可/ブロックやログ記録を行うスクリプトです。
